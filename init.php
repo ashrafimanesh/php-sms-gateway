@@ -1,6 +1,7 @@
 <?php
 
 require_once 'php-connectors/init.php';
+require_once 'php-additional-functions/env.php';
 
 /**
  * Abstract class for sms service
