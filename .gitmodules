@@ -1,3 +1,6 @@
 [submodule "php-connectors"]
 	path = php-connectors
 	url = https://github.com/ashrafimanesh/php-connectors.git
+[submodule "php-additional-functions"]
+	path = php-additional-functions
+	url = https://github.com/ashrafimanesh/php-additional-functions.git

@@ -1,23 +1,49 @@
 <?php
 
+require_once 'php-connectors/init.php';
+
 /**
  * Abstract class for sms service
  *
  * @author ramin ashrafimanesh <ashrafimanesh@gmail.com>
  */
 abstract class AbstSMS {
-    
+    const ConnectionTypeCurl='curl';
     protected $host,$url='';
     
-    public abstract static function send(iSMS $SMS);
+    public abstract static function map_data(iSMS $SMS);
     
-    public abstract static function sends(arrayiSMS $arr);
+    public abstract static function getConnectionType();
     
-    public abstract static function getCredentials();
-    
+    /**
+     * For example : return ['url'=>'example.com'];
+     */
+    public abstract static function getConnectionData();
 
-    public static function getConnection($type='curl',$params=array()) {
-        return Connector::connect($type, $params);
+    /**
+     * 
+     * @param iSMS $SMS
+     * @param type $connection_params ['url'=>'example.com']
+     * @param type $gateway
+     * @return type
+     */
+    public static function send(iSMS $SMS){
+        #get curl connection 
+        $class=  get_called_class();
+        $connector=Connector::connect($class::getConnectionType(),$class::getConnectionData());
+        
+        $i=3;
+        while($i){
+            $i--;
+            $result= Connector::post($connector, $class::map_data($SMS));
+            if($result!==false){
+                $i=0;
+            }
+            else{
+                usleep(100);
+            }
+        }
+        return $result;
     }
 
     public function setHost($host) {
