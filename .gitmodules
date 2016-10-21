@@ -1,0 +1,3 @@
+[submodule "php-connectors"]
+	path = php-connectors
+	url = https://github.com/ashrafimanesh/php-connectors.git
