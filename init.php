@@ -12,14 +12,20 @@ abstract class AbstSMS {
     const ConnectionTypeCurl='curl';
     protected $host,$url='';
     
-    public abstract static function map_data(iSMS $SMS);
+    public static function map_data(iSMS $SMS){
+        trigger_error(__FUNCTION__.' method must be overwritten in '.  get_called_class(), E_USER_ERROR);
+    }
     
-    public abstract static function getConnectionType();
+    public static function getConnectionType(){
+        trigger_error(__FUNCTION__.' method must be overwritten in '.  get_called_class(), E_USER_ERROR);
+    }
     
     /**
      * For example : return ['url'=>'example.com'];
      */
-    public abstract static function getConnectionData();
+    public static function getConnectionData(){
+        trigger_error(__FUNCTION__.' method must be overwritten in '.  get_called_class(), E_USER_ERROR);
+    }
 
     /**
      * 
