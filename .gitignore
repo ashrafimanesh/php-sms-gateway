@@ -1,3 +1,5 @@
 php-additional-functions/
 php-connectors/
 env.php
+env.example.php
+test.php
