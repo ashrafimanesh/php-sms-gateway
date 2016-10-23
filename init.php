@@ -1,8 +1,8 @@
 <?php
 
-require_once 'php-connectors/init.php';
-require_once 'php-additional-functions/env.php';
-
+require_once __DIR__.'/php-connectors/init.php';
+require_once __DIR__.'/php-additional-functions/dd.php';
+require_once __DIR__.'/php-additional-functions/env.php';
 /**
  * Abstract class for sms service
  *
@@ -32,7 +32,7 @@ abstract class AbstSMS {
         #get curl connection 
         $class=  get_called_class();
         $connector=Connector::connect($class::getConnectionType(),$class::getConnectionData());
-        
+
         $i=3;
         while($i){
             $i--;
