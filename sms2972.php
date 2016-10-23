@@ -1,4 +1,5 @@
 <?php
+namespace phpSMSGateway;
 
 class sms2972 extends AbstSMS{
 
@@ -7,7 +8,7 @@ class sms2972 extends AbstSMS{
      * @return array
      */
     public static function getCredentials() {
-        return env('sms2972_credentials');
+        return \phpAdditionalFunction\env('sms2972_credentials');
     }
 
 
@@ -20,7 +21,7 @@ class sms2972 extends AbstSMS{
      * @param \iSMS $SMS
      * @return mixed
      */
-    public static function map_data(\iSMS $SMS) {
+    public static function map_data(iSMS $SMS) {
         list($username, $password, $number) = self::getCredentials();
         $port = 0;
         $flash = false;

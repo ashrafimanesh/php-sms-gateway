@@ -1,4 +1,5 @@
 <?php
+namespace phpSMSGateway;
 
 require_once __DIR__.'/php-connectors/init.php';
 require_once __DIR__.'/php-additional-functions/dd.php';
@@ -37,12 +38,12 @@ abstract class AbstSMS {
     public static function send(iSMS $SMS){
         #get curl connection 
         $class=  get_called_class();
-        $connector=Connector::connect($class::getConnectionType(),$class::getConnectionData());
+        $connector=\phpConnectors\Connector::connect($class::getConnectionType(),$class::getConnectionData());
 
         $i=3;
         while($i){
             $i--;
-            $result= Connector::post($connector, $class::map_data($SMS));
+            $result= \phpConnectors\Connector::post($connector, $class::map_data($SMS));
             if($result!==false){
                 $i=0;
             }

@@ -1,4 +1,5 @@
 <?php
+namespace phpSMSGateway;
 
 class kavehnegar extends AbstSMS{
     /**
@@ -6,7 +7,7 @@ class kavehnegar extends AbstSMS{
      * @return array
      */
     public static function getCredentials() {
-        return env('kavehnegar_credentials');
+        return \phpAdditionalFunction\env('kavehnegar_credentials');
     }
 
     public static function getConnectionData() {
@@ -23,7 +24,7 @@ class kavehnegar extends AbstSMS{
      * @param \iSMS $SMS
      * @return mixed
      */
-    public static function map_data(\iSMS $SMS) {
+    public static function map_data(iSMS $SMS) {
         list($apiKey,$number) = self::getCredentials();
         $data = array(
             "receptor" => $SMS->getTo(),
